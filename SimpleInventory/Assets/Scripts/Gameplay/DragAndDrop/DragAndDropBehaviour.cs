@@ -1,3 +1,5 @@
+using Better.Locators.Runtime;
+using Services;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -6,6 +8,8 @@ namespace Gameplay.DragAndDrop
     [RequireComponent(typeof(Rigidbody))]
     public sealed class DragAndDropBehaviour : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
+        private InputService _inputService;
+
         private Camera _camera;
         private Rigidbody _rigidbody;
         private Vector3 _mousePosition;
@@ -20,6 +24,7 @@ namespace Gameplay.DragAndDrop
         private void Start()
         {
             _camera = Camera.main;
+            _inputService = ServiceLocator.Get<InputService>();
         }
 
         public void OnBeginDrag(PointerEventData eventData)
@@ -30,6 +35,11 @@ namespace Gameplay.DragAndDrop
 
         public void OnDrag(PointerEventData eventData)
         {
+            if (_inputService.IsLocked)
+            {
+                return;
+            }
+
             transform.position = _camera.ScreenToWorldPoint(Input.mousePosition - _mousePosition);
         }
 

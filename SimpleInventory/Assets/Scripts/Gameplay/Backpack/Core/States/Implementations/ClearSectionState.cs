@@ -3,6 +3,8 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Better.Commons.Runtime.Extensions;
+using Better.Locators.Runtime;
+using Services;
 
 namespace Gameplay.Backpack.Core.States
 {
@@ -10,6 +12,7 @@ namespace Gameplay.Backpack.Core.States
     {
         private readonly List<IStorable> _itemsWaitingForClearing;
         private readonly IBackpackContext _backpackContext;
+        private InputService _inputService;
 
         public ClearSectionState(List<IStorable> itemsWaitingForClearing, IBackpackContext backpackContext)
         {
@@ -19,7 +22,15 @@ namespace Gameplay.Backpack.Core.States
 
         public override Task EnterAsync(CancellationToken token)
         {
+            _inputService = ServiceLocator.Get<InputService>();
+            _inputService.Lock();
             return ProcessItems(token);
+        }
+
+        public override Task ExitAsync(CancellationToken token)
+        {
+            _inputService.Unlock();
+            return Task.CompletedTask;
         }
 
         private async Task ProcessItems(CancellationToken token)
@@ -74,11 +85,6 @@ namespace Gameplay.Backpack.Core.States
             }
 
             return true;
-        }
-
-        public override Task ExitAsync(CancellationToken token)
-        {
-            return Task.CompletedTask;
         }
     }
 }

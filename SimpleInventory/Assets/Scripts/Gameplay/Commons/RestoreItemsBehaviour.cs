@@ -3,8 +3,8 @@ using Better.Commons.Runtime.Extensions;
 using Better.Locators.Runtime;
 using Gameplay.Backpack.Core;
 using Gameplay.Core;
-using Gameplay.Items;
 using Gameplay.Services.Items;
+using Services;
 using UnityEngine;
 
 namespace Gameplay.Commons
@@ -15,21 +15,18 @@ namespace Gameplay.Commons
         [SerializeField] private BackpackBehaviour _backpackBehaviour;
 
         private ItemsRegisterService _itemsRegisterService;
+        private InputService _inputService;
         private IBackpackContext BackpackContext => _backpackBehaviour.Context;
 
         private void Start()
         {
             _itemsRegisterService = ServiceLocator.Get<ItemsRegisterService>();
+            _inputService = ServiceLocator.Get<InputService>();
         }
 
         private void Update()
         {
-            if (!Input.GetKeyDown(KeyCode.Space)) return;
-            
-            if (!_backpackBehaviour.IsWaitingForItems)
-            {
-                return;
-            }
+            if (!_inputService.GetKeyDown(KeyCode.Space)) return;
 
             var items = _itemsRegisterService.Items;
 

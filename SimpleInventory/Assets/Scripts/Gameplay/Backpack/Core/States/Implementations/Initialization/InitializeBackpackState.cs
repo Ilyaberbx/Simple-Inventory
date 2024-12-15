@@ -2,28 +2,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using Better.Locators.Runtime;
 using Gameplay.Items;
-using Gameplay.Section;
 using Gameplay.Services.Items;
 
 namespace Gameplay.Backpack.Core.States
 {
-    public sealed class InitializeBackpackData
-    {
-        public SectionBehaviour[] SectionBehaviours { get; }
-
-        public BackpackRuntimeData RuntimeData { get; }
-
-        public IBackpackContext BackpackContext { get; }
-
-        public InitializeBackpackData(SectionBehaviour[] sectionBehaviours, BackpackRuntimeData runtimeData,
-            IBackpackContext backpackContext)
-        {
-            SectionBehaviours = sectionBehaviours;
-            RuntimeData = runtimeData;
-            BackpackContext = backpackContext;
-        }
-    }
-
     public sealed class InitializeBackpackState : BaseBackpackState
     {
         private readonly InitializeBackpackData _data;

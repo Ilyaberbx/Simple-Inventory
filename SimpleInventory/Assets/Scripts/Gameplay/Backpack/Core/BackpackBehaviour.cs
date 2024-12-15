@@ -36,7 +36,6 @@ namespace Gameplay.Backpack.Core
         private ClearSectionState _clearSectionState;
 
         public IBackpackContext Context => _context;
-        public bool IsWaitingForItems => _stateMachine.CurrentState is WaitForItemState;
 
         public async Task SetRuntime(BackpackRuntimeData runtimeData)
         {

@@ -4,8 +4,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Better.Commons.Runtime.Extensions;
 using Better.Locators.Runtime;
-using Gameplay.Services.Items;
 using Gameplay.Services.Items.Persistent;
+using Services;
 using UnityEngine;
 
 namespace Gameplay.Backpack.Core.States
@@ -15,6 +15,7 @@ namespace Gameplay.Backpack.Core.States
         private readonly StoreItemData _data;
 
         private ItemsStorageService _storageService;
+        private InputService _inputService;
 
         public StoreItemState(StoreItemData data)
         {
@@ -24,8 +25,16 @@ namespace Gameplay.Backpack.Core.States
         public override async Task EnterAsync(CancellationToken token)
         {
             _storageService = ServiceLocator.Get<ItemsStorageService>();
+            _inputService = ServiceLocator.Get<InputService>();
 
+            _inputService.Lock();
             await ProcessItems(token);
+        }
+
+        public override Task ExitAsync(CancellationToken token)
+        {
+            _inputService.Unlock();
+            return Task.CompletedTask;
         }
 
         private async Task ProcessItems(CancellationToken token)
@@ -62,11 +71,6 @@ namespace Gameplay.Backpack.Core.States
             ShowFx();
             _data.ItemsWaitingForStoring.Remove(storable);
             return true;
-        }
-
-        public override Task ExitAsync(CancellationToken token)
-        {
-            return Task.CompletedTask;
         }
 
         private async Task<bool> TryProcessHandlers(IStorable storable, CancellationToken token)
