@@ -2,7 +2,7 @@ using Core.MVP;
 using UI.Sections;
 using UnityEngine;
 
-namespace UI
+namespace UI.BackpackInfo
 {
     public sealed class BackpackInfoView : BaseView
     {

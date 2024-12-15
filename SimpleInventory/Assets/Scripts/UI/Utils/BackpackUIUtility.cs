@@ -5,6 +5,7 @@ using Gameplay.Services.Items;
 using Gameplay.Services.Items.Configuration;
 using Gameplay.Services.Items.Sprites;
 using Services;
+using UI.BackpackInfo;
 using UI.Sections;
 
 namespace UI

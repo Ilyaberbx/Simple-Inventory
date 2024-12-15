@@ -2,10 +2,9 @@ using System.Linq;
 using Better.Locators.Runtime;
 using Core.MVP;
 using Gameplay.Section;
-using Gameplay.Services.Items;
 using Gameplay.Services.Items.Persistent;
 
-namespace UI
+namespace UI.BackpackInfo
 {
     public sealed class BackpackInfoPresenter : BasePresenter<BackpackInfoView, BackpackInfoModel>
     {

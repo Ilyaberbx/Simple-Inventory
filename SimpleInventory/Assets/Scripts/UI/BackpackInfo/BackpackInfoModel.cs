@@ -1,8 +1,7 @@
 using Core.MVP;
-using Gameplay.Backpack.Info;
 using UI.Sections;
 
-namespace UI
+namespace UI.BackpackInfo
 {
     public class BackpackInfoModel : IModel
     {

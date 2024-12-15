@@ -6,7 +6,6 @@ using Gameplay.Backpack.Core.States;
 using Gameplay.Backpack.Core.States.Modules;
 using Gameplay.Items;
 using Gameplay.Section;
-using Gameplay.Services.Items;
 using Gameplay.Services.Items.Persistent;
 using UnityEngine;
 using UnityEngine.Events;
