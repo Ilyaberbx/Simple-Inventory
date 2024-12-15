@@ -669,28 +669,14 @@ MonoBehaviour:
       data:
         _services:
         - rid: 1409578637992656897
-        - rid: 1409578661059756036
-        - rid: 1409578661059756035
-        - rid: 1409578661059756034
+        - rid: 1409578663265959939
+        - rid: 1409578663265959940
+        - rid: 1409578663265959941
         - rid: 1409578663265959936
-        - rid: 1409578661059756037
+        - rid: 1409578663265959942
         - rid: 1409578663265959937
     - rid: 1409578637992656897
       type: {class: UserService, ns: Services, asm: Assembly-CSharp}
-      data: 
-    - rid: 1409578661059756034
-      type: {class: ItemsSpriteService, ns: Gameplay.Services.Items.Sprites, asm: Assembly-CSharp}
-      data:
-        _settings: {fileID: 11400000, guid: 14f460261ffa1c7439d1b426036373a1, type: 2}
-    - rid: 1409578661059756035
-      type: {class: ItemsStorageService, ns: Gameplay.Services.Items.Persistent, asm: Assembly-CSharp}
-      data: 
-    - rid: 1409578661059756036
-      type: {class: ItemsConfigurationService, ns: Gameplay.Services.Items.Configuration, asm: Assembly-CSharp}
-      data:
-        _settings: {fileID: 11400000, guid: 13a42f2670d4b3a479c7ee1f08ace782, type: 2}
-    - rid: 1409578661059756037
-      type: {class: ItemsNetworkingService, ns: Gameplay.Services.Items.Networking, asm: Assembly-CSharp}
       data: 
     - rid: 1409578663265959936
       type: {class: ItemsRegisterService, ns: Gameplay.Services.Items, asm: Assembly-CSharp}
@@ -698,6 +684,20 @@ MonoBehaviour:
     - rid: 1409578663265959937
       type: {class: InputService, ns: Services, asm: Assembly-CSharp}
       data: 
+    - rid: 1409578663265959939
+      type: {class: ItemsConfigurationService, ns: Gameplay.Services.Items, asm: Assembly-CSharp}
+      data:
+        _settings: {fileID: 11400000, guid: 13a42f2670d4b3a479c7ee1f08ace782, type: 2}
+    - rid: 1409578663265959940
+      type: {class: ItemsNetworkingService, ns: Gameplay.Services.Items, asm: Assembly-CSharp}
+      data: 
+    - rid: 1409578663265959941
+      type: {class: ItemsStorageService, ns: Gameplay.Services.Items, asm: Assembly-CSharp}
+      data: 
+    - rid: 1409578663265959942
+      type: {class: ItemsSpriteService, ns: Gameplay.Services.Items, asm: Assembly-CSharp}
+      data:
+        _settings: {fileID: 11400000, guid: 14f460261ffa1c7439d1b426036373a1, type: 2}
 --- !u!114 &1054765949
 MonoBehaviour:
   m_ObjectHideFlags: 0
