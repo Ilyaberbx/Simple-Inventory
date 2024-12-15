@@ -4,8 +4,7 @@ using Better.Locators.Runtime;
 using Gameplay.Backpack.Core;
 using Gameplay.Items;
 using Gameplay.Section;
-using Gameplay.Services.Items.Configuration;
-using Gameplay.Services.Items.Networking;
+using Gameplay.Services.Items;
 using UnityEngine;
 
 namespace Gameplay.Backpack.Networking

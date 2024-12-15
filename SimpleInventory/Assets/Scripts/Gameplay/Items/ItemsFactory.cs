@@ -1,4 +1,4 @@
-using Gameplay.Services.Items.Configuration;
+using Gameplay.Services.Items;
 using UnityEngine;
 
 namespace Gameplay.Items

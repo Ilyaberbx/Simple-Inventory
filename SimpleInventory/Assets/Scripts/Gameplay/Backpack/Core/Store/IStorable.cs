@@ -8,7 +8,6 @@ namespace Gameplay.Backpack.Core
     {
         IStoreHandler[] CreateStoreHandlers(IBackpackContext backpackContext);
         IStoreHandler[] CreateClearHandlers(IBackpackContext backpackContext);
-        IStoreHandler[] CreateSavedHandlers(IBackpackContext backpackContext);
         void DisableForStoring();
         void EnableForStoring();
         Transform Transform { get; }

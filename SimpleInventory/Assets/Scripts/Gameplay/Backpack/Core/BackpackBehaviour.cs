@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Better.Locators.Runtime;
 using Better.StateMachine.Runtime;
+using Core.Modules;
 using Gameplay.Backpack.Core.States;
-using Gameplay.Backpack.Core.States.Modules;
 using Gameplay.Items;
 using Gameplay.Section;
-using Gameplay.Services.Items.Persistent;
+using Gameplay.Services.Items;
 using UnityEngine;
 using UnityEngine.Events;
 

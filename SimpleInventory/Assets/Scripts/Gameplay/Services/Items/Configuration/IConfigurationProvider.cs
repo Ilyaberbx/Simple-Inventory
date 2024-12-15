@@ -1,6 +1,6 @@
 using Gameplay.Items;
 
-namespace Gameplay.Services.Items.Configuration
+namespace Gameplay.Services.Items
 {
     public interface IConfigurationProvider
     {

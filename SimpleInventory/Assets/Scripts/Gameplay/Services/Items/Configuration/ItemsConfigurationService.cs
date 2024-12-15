@@ -3,7 +3,7 @@ using System.Linq;
 using Better.Services.Runtime;
 using Gameplay.Items;
 
-namespace Gameplay.Services.Items.Configuration
+namespace Gameplay.Services.Items
 {
     [Serializable]
     public class ItemsConfigurationService : PocoService<ItemsConfigurationServiceSettings>, IConfigurationProvider

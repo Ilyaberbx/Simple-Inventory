@@ -7,7 +7,7 @@ using Gameplay.Items;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Gameplay.Services.Items.Networking
+namespace Gameplay.Services.Items
 {
     [Serializable]
     public sealed class ItemNetworkDto

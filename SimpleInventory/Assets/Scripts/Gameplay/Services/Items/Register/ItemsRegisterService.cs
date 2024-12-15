@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Better.Locators.Runtime;
 using Better.Services.Runtime;
 using Gameplay.Items;
-using Gameplay.Services.Items.Configuration;
 using UnityEngine;
 
 namespace Gameplay.Services.Items

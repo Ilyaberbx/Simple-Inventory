@@ -9,7 +9,7 @@ using Gameplay.Items;
 using Gameplay.Section;
 using Services;
 
-namespace Gameplay.Services.Items.Persistent
+namespace Gameplay.Services.Items
 {
     [Serializable]
     public sealed class ItemsStorageService : PocoService

@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Better.Commons.Runtime.Extensions;
 using Better.Locators.Runtime;
-using Gameplay.Services.Items.Persistent;
+using Gameplay.Services.Items;
 using Services;
 using UnityEngine;
 

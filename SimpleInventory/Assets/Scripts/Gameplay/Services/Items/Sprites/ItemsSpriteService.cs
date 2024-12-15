@@ -4,7 +4,7 @@ using Better.Services.Runtime;
 using Gameplay.Items;
 using UnityEngine;
 
-namespace Gameplay.Services.Items.Sprites
+namespace Gameplay.Services.Items
 {
     [Serializable]
     public class ItemsSpriteService : PocoService<ItemsSpritesServiceSettings>

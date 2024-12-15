@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using Better.Locators.Runtime;
 using Gameplay.Items;
-using Gameplay.Services.Items.Configuration;
-using Gameplay.Services.Items.Sprites;
+using Gameplay.Services.Items;
 using Services;
 using UI.BackpackInfo;
 using UI.Sections;

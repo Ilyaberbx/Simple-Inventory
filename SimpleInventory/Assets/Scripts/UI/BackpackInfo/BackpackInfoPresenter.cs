@@ -2,7 +2,7 @@ using System.Linq;
 using Better.Locators.Runtime;
 using Core.MVP;
 using Gameplay.Section;
-using Gameplay.Services.Items.Persistent;
+using Gameplay.Services.Items;
 
 namespace UI.BackpackInfo
 {

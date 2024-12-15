@@ -2,7 +2,7 @@ using System;
 using Gameplay.Items;
 using UnityEngine;
 
-namespace Gameplay.Services.Items.Sprites
+namespace Gameplay.Services.Items
 {
     [CreateAssetMenu(menuName = "Create SpritesServiceSettings", fileName = "SpritesServiceSettings", order = 0)]
     public sealed class ItemsSpritesServiceSettings : ScriptableObject

@@ -37,8 +37,7 @@ namespace Gameplay.Commons
 
             foreach (var item in items)
             {
-                var item1 = item;
-                var data = _restoreItemsData.FirstOrDefault(temp => temp.ItemType == item1.ItemType);
+                var data = _restoreItemsData.FirstOrDefault(temp => temp.ItemType == item.ItemType);
 
                 if (data == null)
                 {

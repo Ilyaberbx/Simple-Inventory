@@ -3,7 +3,7 @@ using Better.StateMachine.Runtime.Modules;
 using Better.StateMachine.Runtime.States;
 using UnityEngine;
 
-namespace Gameplay.Backpack.Core.States.Modules
+namespace Core.Modules
 {
     public class LoggerModule<TState> : Module<TState> where TState : BaseState
     {

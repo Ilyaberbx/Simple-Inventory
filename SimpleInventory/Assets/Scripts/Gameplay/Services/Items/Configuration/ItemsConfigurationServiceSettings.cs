@@ -1,7 +1,7 @@
 using Gameplay.Items;
 using UnityEngine;
 
-namespace Gameplay.Services.Items.Configuration
+namespace Gameplay.Services.Items
 {
     [CreateAssetMenu(menuName = "Create ItemsConfigurationServiceSettings",
         fileName = "ItemsConfigurationServiceSettings", order = 0)]
