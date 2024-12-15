@@ -1,0 +1,3 @@
+namespace Gameplay.Backpack.Core
+{
+}
