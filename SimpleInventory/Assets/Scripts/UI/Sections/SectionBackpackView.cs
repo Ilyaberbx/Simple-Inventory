@@ -1,5 +1,4 @@
 using System;
-using System.Globalization;
 using Core.MVP;
 using Gameplay.Items;
 using Gameplay.Section;
@@ -10,9 +9,10 @@ using UnityEngine.UI;
 
 namespace UI.Sections
 {
-    public sealed class SectionBackpackView : BaseView, IPointerClickHandler
+    public sealed class SectionBackpackView : BaseView, IPointerUpHandler
     {
         public event Action<BackpackSectionType> OnUtilizeClick;
+        private const string WeightFormat = "Weight: {0}";
 
         [SerializeField] private GameObject _itemContainer;
         [SerializeField] private BackpackSectionType _sectionType;
@@ -20,6 +20,7 @@ namespace UI.Sections
         [SerializeField] private TextMeshProUGUI _weightText;
         [SerializeField] private TextMeshProUGUI _nameText;
         private SectionInfoModel _model;
+        private bool _hovering;
 
         public BackpackSectionType SectionType => _sectionType;
 
@@ -40,12 +41,11 @@ namespace UI.Sections
             _model = model;
             _itemContainer.gameObject.SetActive(true);
             _itemIcon.sprite = model.ItemIcon;
-            _weightText.text = model.Weight.ToString(CultureInfo.InvariantCulture);
+            _weightText.text = string.Format(WeightFormat, model.Weight);
             _nameText.text = model.Name;
         }
 
-
-        public void OnPointerClick(PointerEventData eventData)
+        public void OnPointerUp(PointerEventData eventData)
         {
             if (_model == null)
             {

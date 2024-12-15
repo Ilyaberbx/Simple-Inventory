@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Better.Locators.Runtime;
@@ -10,9 +12,11 @@ using UnityEngine;
 namespace Gameplay.Services.Items
 {
     [Serializable]
-    public sealed class ItemsCreationService : PocoService
+    public sealed class ItemsRegisterService : PocoService
     {
         private ItemsFactory _factory;
+        public IReadOnlyList<BaseItemBehaviour> Items => _items;
+        private readonly List<BaseItemBehaviour> _items = new();
 
         protected override Task OnInitializeAsync(CancellationToken cancellationToken)
         {
@@ -28,7 +32,11 @@ namespace Gameplay.Services.Items
 
         public BaseItemBehaviour New(ItemType type, Vector3 at, Transform parent = null)
         {
-            return _factory.Create(type, at, parent);
+            var item = _factory.Create(type, at, parent);
+
+            _items.Add(item);
+
+            return item;
         }
     }
 }

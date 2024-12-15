@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Better.Locators.Runtime;
 using Gameplay.Backpack.Core;
@@ -16,12 +17,12 @@ namespace Gameplay
         [SerializeField] private Transform _bottleSpawnPoint;
 
         private UserService _userService;
-        private ItemsCreationService _itemsCreationService;
+        private ItemsRegisterService _itemsRegisterService;
 
         private async void Start()
         {
             _userService = ServiceLocator.Get<UserService>();
-            _itemsCreationService = ServiceLocator.Get<ItemsCreationService>();
+            _itemsRegisterService = ServiceLocator.Get<ItemsRegisterService>();
 
             await InitializeBackpack();
             InitializeItems();
@@ -29,9 +30,9 @@ namespace Gameplay
 
         private void InitializeItems()
         {
-            _itemsCreationService.New(ItemType.Apple, _appleSpawnPoint.position);
-            _itemsCreationService.New(ItemType.Book, _bookSpawnPoint.position);
-            _itemsCreationService.New(ItemType.Bottle, _bottleSpawnPoint.position);
+            _itemsRegisterService.New(ItemType.Apple, _appleSpawnPoint.position);
+            _itemsRegisterService.New(ItemType.Book, _bookSpawnPoint.position);
+            _itemsRegisterService.New(ItemType.Bottle, _bottleSpawnPoint.position);
         }
 
         private Task InitializeBackpack()

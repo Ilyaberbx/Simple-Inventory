@@ -35,7 +35,7 @@ namespace Gameplay.Backpack.Core.States
 
         public override async Task EnterAsync(CancellationToken token)
         {
-            var itemsCreationService = ServiceLocator.Get<ItemsCreationService>();
+            var itemsCreationService = ServiceLocator.Get<ItemsRegisterService>();
             var sectionsData = _data.RuntimeData.Sections;
             var sectionBehaviours = _data.SectionBehaviours;
 

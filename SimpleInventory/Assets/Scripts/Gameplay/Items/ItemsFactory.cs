@@ -1,4 +1,3 @@
-using Gameplay.Services.Items;
 using Gameplay.Services.Items.Configuration;
 using UnityEngine;
 
@@ -29,6 +28,11 @@ namespace Gameplay.Items
             var configuration = _configurationProvider.GetConfiguration(type);
             item.Initialize(configuration);
             return item;
+        }
+
+        public void Destroy(BaseItemBehaviour item)
+        {
+            Object.Destroy(item.gameObject);
         }
 
         private string GetLoadingPath(string loadName)

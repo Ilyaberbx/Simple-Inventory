@@ -12,6 +12,8 @@ namespace Gameplay.Backpack.Networking
 {
     public sealed class BackpackNetworkingBehaviour : MonoBehaviour
     {
+        private const string ResponseReceivedFormat = "Reponse: {0}";
+
         [SerializeField] private BackpackBehaviour _backpackBehaviour;
 
         private ItemsNetworkingService _networkingService;
@@ -58,8 +60,8 @@ namespace Gameplay.Backpack.Networking
             var dto = new ItemNetworkDto(item, configuration.Name, configuration.Weight);
 
             var response = await _networkingService.PostRequest(dto);
-
-            Debug.Log(response);
+            var message = string.Format(ResponseReceivedFormat, response);
+            Debug.Log(message);
         }
     }
 }
