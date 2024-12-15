@@ -40,6 +40,8 @@ namespace UI.BackpackInfo
 
         public override void Rebuild()
         {
+            View.CanvasGroup.alpha = 0;
+
             var sectionViews = View.SectionViews;
 
             foreach (var sectionModel in Model.SectionModels)
@@ -53,10 +55,13 @@ namespace UI.BackpackInfo
 
                 sectionView.SetData(sectionModel);
             }
+
+            View.CanvasGroup.alpha = 1;
         }
 
         private void OnUtilizeButtonClicked(BackpackSectionType sectionType)
         {
+            View.CanvasGroup.alpha = 0;
             _itemsStorageService.Clear(sectionType);
         }
     }

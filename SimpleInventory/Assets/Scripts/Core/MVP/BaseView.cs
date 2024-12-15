@@ -7,7 +7,7 @@ namespace Core.MVP
     {
         private CanvasGroup _canvasGroup;
 
-        protected CanvasGroup CanvasGroup
+        public CanvasGroup CanvasGroup
         {
             get
             {

@@ -26,27 +26,32 @@ namespace Gameplay.Backpack.Core
 
         private StateMachine<BaseBackpackState> _stateMachine;
         private ItemsStorageService _storageService;
-        private BackpackContext _context;
-        private StoreItemState _storeState;
+        private IBackpackContext _context;
 
         private readonly List<IStorable> _itemsWaitingForCleaning = new();
         private readonly List<IStorable> _itemsWaitingForStoring = new();
 
-        public Task SetRuntime(BackpackRuntimeData runtimeData)
+        private WaitForItemState _waitForItemState;
+        private StoreItemState _storeItemState;
+        private ClearSectionState _clearSectionState;
+
+        public IBackpackContext Context => _context;
+        public bool IsWaitingForItems => _stateMachine.CurrentState is WaitForItemState;
+
+        public async Task SetRuntime(BackpackRuntimeData runtimeData)
         {
-            return RunInitialState(runtimeData);
+            await RunInitialState(runtimeData);
+            await _stateMachine.ChangeStateAsync(_waitForItemState, destroyCancellationToken);
         }
 
         private async Task RunInitialState(BackpackRuntimeData runtimeData)
         {
             _stateMachine.Run();
 
-            var waitForItemState = new WaitForItemState();
             var initializeData = new InitializeBackpackData(_sectionBehaviours, runtimeData, _context);
             var initializeState = new InitializeBackpackState(initializeData);
 
             await _stateMachine.ChangeStateAsync(initializeState, destroyCancellationToken);
-            await _stateMachine.ChangeStateAsync(waitForItemState, destroyCancellationToken);
         }
 
         private void Awake()
@@ -54,11 +59,18 @@ namespace Gameplay.Backpack.Core
             _stateMachine = new StateMachine<BaseBackpackState>();
             _context = new BackpackContext(_sectionBehaviours);
 
+            InitializeStates();
+
             var loggerModule = new LoggerModule<BaseBackpackState>();
             _stateMachine.AddModule(loggerModule);
+        }
 
+        private void InitializeStates()
+        {
+            _waitForItemState = new WaitForItemState();
+            _clearSectionState = new ClearSectionState(_itemsWaitingForCleaning, _context);
             var storeData = new StoreItemData(_storeVfxPrefab, _storeVfxPoint, _context, _itemsWaitingForStoring);
-            _storeState = new StoreItemState(storeData);
+            _storeItemState = new StoreItemState(storeData);
         }
 
         private void Start()
@@ -102,9 +114,8 @@ namespace Gameplay.Backpack.Core
                 return;
             }
 
-            await _stateMachine.ChangeStateAsync(_storeState, destroyCancellationToken);
-            var waitForItemState = new WaitForItemState();
-            await _stateMachine.ChangeStateAsync(waitForItemState, destroyCancellationToken);
+            await _stateMachine.ChangeStateAsync(_storeItemState, destroyCancellationToken);
+            await _stateMachine.ChangeStateAsync(_waitForItemState, destroyCancellationToken);
         }
 
         private async void OnSectionDataCleared(BackpackSectionType sectionType)
@@ -121,10 +132,8 @@ namespace Gameplay.Backpack.Core
                 return;
             }
 
-            var clearSectionState = new ClearSectionState(_itemsWaitingForCleaning, _context);
-            await _stateMachine.ChangeStateAsync(clearSectionState, destroyCancellationToken);
-            var waitForItemState = new WaitForItemState();
-            await _stateMachine.ChangeStateAsync(waitForItemState, destroyCancellationToken);
+            await _stateMachine.ChangeStateAsync(_clearSectionState, destroyCancellationToken);
+            await _stateMachine.ChangeStateAsync(_waitForItemState, destroyCancellationToken);
         }
     }
 }

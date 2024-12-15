@@ -17,10 +17,8 @@ namespace Gameplay.Items
 
         private ItemConfiguration _configuration;
         protected ItemConfiguration Configuration => _configuration;
-
         public ItemType ItemType => _itemType;
         public BackpackSectionType SectionType => _configuration.StoreSectionType;
-
         public Transform Transform => transform;
 
         public void Initialize(ItemConfiguration configuration)

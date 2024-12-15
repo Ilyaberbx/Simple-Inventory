@@ -30,11 +30,6 @@ namespace Gameplay.Items
             return item;
         }
 
-        public void Destroy(BaseItemBehaviour item)
-        {
-            Object.Destroy(item.gameObject);
-        }
-
         private string GetLoadingPath(string loadName)
         {
             return RootDirectory + loadName;

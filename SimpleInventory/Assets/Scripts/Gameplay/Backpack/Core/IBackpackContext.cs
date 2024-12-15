@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Gameplay.Items;
 using Gameplay.Section;
@@ -7,6 +8,8 @@ namespace Gameplay.Backpack.Core
 {
     public interface IBackpackContext
     {
+        event Action<ItemType, BackpackSectionType> OnCleared;
+        event Action<ItemType, BackpackSectionType> OnStored;
         bool TryGetStorePosition(BackpackSectionType type, out Vector3 position);
         bool TryGetClearPosition(BackpackSectionType type, out Vector3 position);
         Task Open(BackpackSectionType type);

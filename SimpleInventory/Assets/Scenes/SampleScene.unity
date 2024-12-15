@@ -593,6 +593,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1135497401}
+  - component: {fileID: 1135497402}
   m_Layer: 0
   m_Name: WorldRoot
   m_TagString: Untagged
@@ -619,6 +620,26 @@ Transform:
   - {fileID: 705507995}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1135497402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135497400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a675624302e74b9c8e12909f97748c9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _restoreItemsData:
+  - _itemType: 1
+    _point: {fileID: 1174737062}
+  - _itemType: 2
+    _point: {fileID: 1511108686}
+  - _itemType: 3
+    _point: {fileID: 1519535110}
+  _backpackBehaviour: {fileID: 1086624155}
 --- !u!1 &1174737061
 GameObject:
   m_ObjectHideFlags: 0
