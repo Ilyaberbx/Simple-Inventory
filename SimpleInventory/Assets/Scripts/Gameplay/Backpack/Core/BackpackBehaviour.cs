@@ -57,7 +57,11 @@ namespace Gameplay.Backpack.Core
         {
             InitializeInternal();
             InitializeStates();
+            InitializeModules();
+        }
 
+        private void InitializeModules()
+        {
             var loggerModule = new LoggerModule<BaseBackpackState>();
             _stateMachine.AddModule(loggerModule);
         }
