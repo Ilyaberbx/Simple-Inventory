@@ -11,6 +11,7 @@ namespace Gameplay.Commons
 {
     public sealed class RestoreItemsBehaviour : MonoBehaviour
     {
+        [SerializeField] private KeyCode _restoreKeyCode;
         [SerializeField] private ItemPointData[] _restoreItemsData;
         [SerializeField] private BackpackBehaviour _backpackBehaviour;
 
@@ -26,7 +27,7 @@ namespace Gameplay.Commons
 
         private void Update()
         {
-            if (!_inputService.GetKeyDown(KeyCode.Space)) return;
+            if (!_inputService.GetKeyDown(_restoreKeyCode)) return;
 
             var items = _itemsRegisterService.Items;
 

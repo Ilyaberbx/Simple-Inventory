@@ -31,7 +31,6 @@ namespace Gameplay.Services.Items
         public BaseItemBehaviour New(ItemType type, Vector3 at, Transform parent = null)
         {
             var item = _factory.Create(type, at, parent);
-
             _items.Add(item);
 
             return item;

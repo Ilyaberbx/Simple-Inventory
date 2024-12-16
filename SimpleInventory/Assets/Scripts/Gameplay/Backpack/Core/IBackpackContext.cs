@@ -6,6 +6,11 @@ using UnityEngine;
 
 namespace Gameplay.Backpack.Core
 {
+    /// <summary>
+    /// This interface provides an API for interacting with a backpack system. It includes methods for storing and clearing items, 
+    /// opening and closing backpack sections, and checking the state of the backpack (e.g., whether a section is open or occupied).
+    /// Events are triggered when items are stored or cleared.
+    /// </summary>
     public interface IBackpackContext
     {
         event Action<ItemType, BackpackSectionType> OnCleared;

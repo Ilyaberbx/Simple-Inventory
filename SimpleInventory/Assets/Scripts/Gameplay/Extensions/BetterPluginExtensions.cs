@@ -25,7 +25,7 @@ namespace Gameplay.Extensions
             {
                 await stateMachine.ChangeStateAsync(state, token);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // ignored
             }

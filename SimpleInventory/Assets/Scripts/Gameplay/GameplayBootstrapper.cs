@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Better.Locators.Runtime;
 using Gameplay.Backpack.Core;
+using Gameplay.Camera;
 using Gameplay.Core;
 using Gameplay.Services.Items;
 using Services;
@@ -12,8 +13,10 @@ namespace Gameplay
 {
     public class GameplayBootstrapper : MonoBehaviour
     {
+        [SerializeField] private Transform _cameraTarget;
         [SerializeField] private ItemPointData[] _itemsPointData;
         [SerializeField] private BackpackBehaviour _backpackBehaviour;
+        [SerializeField] private CameraLookAroundBehaviour _cameraLookAround;
 
         private UserService _userService;
         private ItemsRegisterService _itemsRegisterService;
@@ -26,6 +29,7 @@ namespace Gameplay
 
             await InitializeBackpack(backpackData);
             InitializeItems(backpackData.Sections);
+            _cameraLookAround.SetPivot(_cameraTarget);
         }
 
         private void InitializeItems(IReadOnlyCollection<SectionRuntimeData> sectionsRuntimeData)

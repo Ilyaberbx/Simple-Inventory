@@ -100,7 +100,6 @@ namespace Gameplay.Backpack.Core.States
         {
             var item = storable.ItemType;
             var section = storable.SectionType;
-
             var backpackContext = _data.BackpackContext;
 
             backpackContext.Store(section, storable);

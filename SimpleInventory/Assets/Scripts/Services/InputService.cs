@@ -36,5 +36,10 @@ namespace Services
         {
             return !_isLocked && Input.GetKeyDown(keyCode);
         }
+
+        public bool GetKey(KeyCode keyCode)
+        {
+            return !_isLocked && Input.GetKey(keyCode);
+        }
     }
 }
