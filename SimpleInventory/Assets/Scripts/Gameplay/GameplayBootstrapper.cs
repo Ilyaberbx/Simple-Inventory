@@ -28,17 +28,17 @@ namespace Gameplay
             InitializeItems(backpackData.Sections);
         }
 
-        private void InitializeItems(IReadOnlyCollection<SectionRuntimeData> sectionsRuntime)
+        private void InitializeItems(IReadOnlyCollection<SectionRuntimeData> sectionsRuntimeData)
         {
-            foreach (var data in _itemsPointData)
+            foreach (var itemPointData in _itemsPointData)
             {
-                if (sectionsRuntime.Any(temp => temp.Item == data.ItemType))
+                if (sectionsRuntimeData.Any(temp => temp.Item == itemPointData.ItemType))
                 {
                     continue;
                 }
 
-                var itemType = data.ItemType;
-                var point = data.Point;
+                var itemType = itemPointData.ItemType;
+                var point = itemPointData.Point;
                 _itemsRegisterService.New(itemType, point.position);
             }
         }

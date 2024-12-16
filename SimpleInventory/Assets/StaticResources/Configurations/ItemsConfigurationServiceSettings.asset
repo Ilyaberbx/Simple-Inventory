@@ -65,10 +65,10 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     _storeRotationDuration: 1.5
-    _snappingJumpPower: 15
+    _snappingJumpPower: 2
     _snappingNumJumps: 0
     _snappingDuration: 1.5
-    _weight: 2
+    _weight: 4
     _name: Simple apple
   - _type: 2
     _storeSectionType: 1
@@ -122,10 +122,10 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     _storeRotationDuration: 1.5
-    _snappingJumpPower: 15
+    _snappingJumpPower: 4
     _snappingNumJumps: 0
     _snappingDuration: 1.5
-    _weight: 4
+    _weight: 6
     _name: Simple bottle
   - _type: 3
     _storeSectionType: 2
@@ -179,7 +179,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     _storeRotationDuration: 1.5
-    _snappingJumpPower: 15
+    _snappingJumpPower: 8
     _snappingNumJumps: 0
     _snappingDuration: 1.5
     _weight: 7

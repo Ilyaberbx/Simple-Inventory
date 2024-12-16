@@ -10,7 +10,7 @@ namespace Gameplay.DragAndDrop
     {
         private InputService _inputService;
 
-        private Camera _camera;
+        private UnityEngine.Camera _camera;
         private Rigidbody _rigidbody;
         private Vector3 _mousePosition;
 
@@ -23,7 +23,7 @@ namespace Gameplay.DragAndDrop
 
         private void Start()
         {
-            _camera = Camera.main;
+            _camera = UnityEngine.Camera.main;
             _inputService = ServiceLocator.Get<InputService>();
         }
 

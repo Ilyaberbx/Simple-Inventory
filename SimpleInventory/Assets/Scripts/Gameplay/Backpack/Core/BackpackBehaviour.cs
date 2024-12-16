@@ -34,7 +34,6 @@ namespace Gameplay.Backpack.Core
         private WaitForItemState _waitForItemState;
         private StoreItemState _storeItemState;
         private ClearSectionState _clearSectionState;
-
         public IBackpackContext Context => _context;
 
         public async Task SetRuntime(BackpackRuntimeData runtimeData)
@@ -55,13 +54,17 @@ namespace Gameplay.Backpack.Core
 
         private void Awake()
         {
-            _stateMachine = new StateMachine<BaseBackpackState>();
-            _context = new BackpackContext(_sectionBehaviours);
-
+            InitializeInternal();
             InitializeStates();
 
             var loggerModule = new LoggerModule<BaseBackpackState>();
             _stateMachine.AddModule(loggerModule);
+        }
+
+        private void InitializeInternal()
+        {
+            _stateMachine = new StateMachine<BaseBackpackState>();
+            _context = new BackpackContext(_sectionBehaviours);
         }
 
         private void InitializeStates()
