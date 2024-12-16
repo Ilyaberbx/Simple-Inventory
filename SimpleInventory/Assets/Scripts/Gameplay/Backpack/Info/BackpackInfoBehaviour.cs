@@ -1,4 +1,3 @@
-using UI;
 using UI.BackpackInfo;
 using UI.Utils;
 using UnityEngine;
@@ -10,7 +9,7 @@ namespace Gameplay.Backpack.Info
     public sealed class BackpackInfoBehaviour : MonoBehaviour, IBeginDragHandler, IEndDragHandler
     {
         [SerializeField] private BackpackInfoPresenter _presenter;
-        
+
         public void OnBeginDrag(PointerEventData eventData)
         {
             var model = BackpackUIUtility.CreateInfoModel();

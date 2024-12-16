@@ -4,6 +4,7 @@ using Better.Locators.Runtime;
 using Better.StateMachine.Runtime;
 using Core.Modules;
 using Gameplay.Backpack.Core.States;
+using Gameplay.Extensions;
 using Gameplay.Items;
 using Gameplay.Section;
 using Gameplay.Services.Items;
@@ -24,7 +25,7 @@ namespace Gameplay.Backpack.Core
         [SerializeField] private SectionBehaviour[] _sectionBehaviours;
         [SerializeField] private StorableTriggerObserver _storableTriggerObserver;
 
-        private StateMachine<BaseBackpackState> _stateMachine;
+        private IStateMachine<BaseBackpackState> _stateMachine;
         private ItemsStorageService _storageService;
         private IBackpackContext _context;
 
@@ -39,7 +40,7 @@ namespace Gameplay.Backpack.Core
         public async Task SetRuntime(BackpackRuntimeData runtimeData)
         {
             await RunInitialState(runtimeData);
-            await _stateMachine.ChangeStateAsync(_waitForItemState, destroyCancellationToken);
+            await _stateMachine.ChangeStateAsync(_waitForItemState, destroyCancellationToken, true);
         }
 
         private async Task RunInitialState(BackpackRuntimeData runtimeData)
@@ -49,7 +50,7 @@ namespace Gameplay.Backpack.Core
             var initializeData = new InitializeBackpackData(_sectionBehaviours, runtimeData, _context);
             var initializeState = new InitializeBackpackState(initializeData);
 
-            await _stateMachine.ChangeStateAsync(initializeState, destroyCancellationToken);
+            await _stateMachine.ChangeStateAsync(initializeState, destroyCancellationToken, true);
         }
 
         private void Awake()
@@ -116,8 +117,8 @@ namespace Gameplay.Backpack.Core
                 return;
             }
 
-            await _stateMachine.ChangeStateAsync(_storeItemState, destroyCancellationToken);
-            await _stateMachine.ChangeStateAsync(_waitForItemState, destroyCancellationToken);
+            await _stateMachine.ChangeStateAsync(_storeItemState, destroyCancellationToken, true);
+            await _stateMachine.ChangeStateAsync(_waitForItemState, destroyCancellationToken, true);
         }
 
         private async void OnSectionDataCleared(BackpackSectionType sectionType)
@@ -134,8 +135,8 @@ namespace Gameplay.Backpack.Core
                 return;
             }
 
-            await _stateMachine.ChangeStateAsync(_clearSectionState, destroyCancellationToken);
-            await _stateMachine.ChangeStateAsync(_waitForItemState, destroyCancellationToken);
+            await _stateMachine.ChangeStateAsync(_clearSectionState, destroyCancellationToken, true);
+            await _stateMachine.ChangeStateAsync(_waitForItemState, destroyCancellationToken, true);
         }
     }
 }
